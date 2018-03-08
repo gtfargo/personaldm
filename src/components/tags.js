@@ -17,7 +17,7 @@ const Item = styled.li`
   padding: .5em;
   border-radius: 2px;
   text-transform: capitalize;
-  margin: 0 .5em 0 0;
+  margin: 0 .5em .5em 0;
   }
 `
 

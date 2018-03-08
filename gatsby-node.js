@@ -29,6 +29,32 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     })
   })
 
+  const loadCampaigns = new Promise((resolve, reject) => {
+    graphql(`
+      {
+        allContentfulCampaign {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+    `
+    ).then(result => {
+        result.data.allContentfulCampaign.edges.map(({ node }) => {
+        createPage({
+          path: `campaigns/${node.slug}/`,
+          component: path.resolve(`./src/templates/campaign.js`),
+          context: {
+            slug: node.slug,
+          },
+        })
+      })
+      resolve()
+    })
+  })
+
   const loadPages = new Promise((resolve, reject) => {
     graphql(`
       {
@@ -55,5 +81,5 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     })
   })
 
-  return Promise.all([loadPosts, loadPages])
+  return Promise.all([loadPosts, loadCampaigns, loadPages])
 };

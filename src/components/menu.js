@@ -51,6 +51,7 @@ const Menu = () => {
         <Nav>
           <ul>
             <li><Link to="/" exact activeStyle={activeLinkStyle}>Home</Link></li>
+            <li><Link to="/campaigns/" activeStyle={activeLinkStyle}>Campaigns</Link></li>
             <li><Link to="/about/" activeStyle={activeLinkStyle}>About</Link></li>
             <li><Link to="/contact/" activeStyle={activeLinkStyle}>Contact</Link></li>
           </ul>

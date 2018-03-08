@@ -1,22 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withStyles } from 'material-ui/styles';
 import Link from "gatsby-link";
 import Img from "gatsby-image";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 import config from "../utils/siteConfig";
-// import withRoot from '../withRoot';
 
-
-// const styles = theme => ({
-//   root: {
-//     textAlign: 'center',
-//     paddingTop: theme.spacing.unit * 20,
-//   },
-// });
-
-const Index = ({ data }) => {
+const Campaigns = ({ data }) => {
   const Wrapper = styled.section`
     padding: 2em 1.5em;
     margin: 0 auto;
@@ -80,7 +70,7 @@ const Index = ({ data }) => {
     }
   `;
 
-  const PostLink = styled(Link)`
+  const CampaignLink = styled(Link)`
     display: flex;
     flex-flow: column;
     height: 100%;
@@ -102,25 +92,25 @@ const Index = ({ data }) => {
     }
   `;
 
-  const posts = data.allContentfulPost.edges;
+  const campaigns = data.allContentfulCampaign.edges;
 
   return (
     <Wrapper>
       <Header>
         <h1>
-          Your personal Dungeon Master
-          <span>🎉</span>
+          All Campaigns
+          <span>💦</span>
         </h1>
       </Header>
 
-      {posts && (
+      {campaigns && (
         <List>
-          {posts.map(({ node: post, index }) => (
-            <Card key={post.id}>
-              <PostLink to={`/posts/${post.slug}/`}>
-                <Img sizes={post.heroImage.sizes} backgroundColor={"#EEEEEE"} />
-                <h3>{post.title}</h3>
-              </PostLink>
+          {campaigns.map(({ node: campaign, index }) => (
+            <Card key={campaign.id}>
+              <CampaignLink to={`/campaigns/${campaign.slug}/`}>
+                <Img sizes={campaign.heroImage.sizes} backgroundColor={"#EEEEEE"} />
+                <h3>{campaign.title}</h3>
+              </CampaignLink>
             </Card>
           ))}
         </List>
@@ -130,8 +120,8 @@ const Index = ({ data }) => {
 };
 
 export const query = graphql`
-  query indexQuery {
-    allContentfulPost(
+  query campaignsQuery {
+    allContentfulCampaign(
       limit: 1000
       sort: { fields: [publishDate], order: DESC }
     ) {
@@ -146,7 +136,7 @@ export const query = graphql`
               ...GatsbyContentfulSizes_noBase64
             }
           }
-          body {
+          summary {
             childMarkdownRemark {
               html
             }
@@ -158,6 +148,4 @@ export const query = graphql`
   }
 `;
 
-export default Index
-// export default withRoot(withStyles(styles)(Index));
-
+export default Campaigns;

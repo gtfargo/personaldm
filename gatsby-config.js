@@ -20,7 +20,6 @@ module.exports = {
         siteUrl: config.siteUrl,
       },
     },
-    'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     {
     resolve: `gatsby-transformer-remark`,
@@ -38,6 +37,7 @@ module.exports = {
         contentfulConfig.development :
         contentfulConfig.production
     },
-    'gatsby-plugin-netlify'
+    'gatsby-plugin-netlify',
+    'gatsby-plugin-styled-components'
   ],
 }
