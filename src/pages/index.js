@@ -7,7 +7,7 @@ import Helmet from "react-helmet";
 import styled from "styled-components";
 import config from "../utils/siteConfig";
 // import withRoot from '../withRoot';
-
+import graphpaperBackground from '../images/graph_paper.png'
 
 // const styles = theme => ({
 //   root: {
@@ -21,6 +21,7 @@ const Index = ({ data }) => {
     padding: 2em 1.5em;
     margin: 0 auto;
     max-width: ${props => props.theme.sizes.maxWidth};
+    background: url(${graphpaperBackground}) repeat fixed center;
   `;
 
   const Header = styled.div`
@@ -106,7 +107,8 @@ const Index = ({ data }) => {
     line-height: 2em;
     font-weight: 600;
     text-transform: capitalize;
-    margin: 1em 1em 2em 1em;
+    padding: 1em 1em 2em 1em;
+    background-color: white;
   `;
 
   const PostPreview = styled(Img)`
