@@ -69,15 +69,23 @@ const Index = ({ data }) => {
 
   const Card = styled.li`
     border: 1px solid ${props => props.theme.colors.secondary};
-    border-radius: 2px;
-    margin: 0 0 1em 0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0 0 5em 0;
     width: 100%;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    transition: all 200ms;
     @media screen and (min-width: ${props => props.theme.responsive.small}) {
-      flex: 0 0 49%;
+      flex: 0 0 47.5%;
     }
     @media screen and (min-width: ${props => props.theme.responsive.medium}) {
-      flex: 0 0 32%;
+      flex: 0 0 30%;
     }
+    &:hover {
+      transform: translateY(-15px);
+      box-shadow: 0px 20px 30px rgba(0,0,0,0.1);
+    }
+
   `;
 
   const PostLink = styled(Link)`
@@ -87,19 +95,22 @@ const Index = ({ data }) => {
     flex: 0 1 100%;
     color: ${props => props.theme.colors.base};
     text-decoration: none;
-
     div {
       flex-grow: 1;
       width: 100%;
       height: 100%;
     }
+  `;
 
-    h3 {
-      font-weight: 600;
-      text-transform: capitalize;
-      text-align: center;
-      margin: 1em 0;
-    }
+  const PostCaption = styled.h3`
+    line-height: 2em;
+    font-weight: 600;
+    text-transform: capitalize;
+    margin: 1em 1em 2em 1em;
+  `;
+
+  const PostPreview = styled(Img)`
+    max-height: 250px;
   `;
 
   const posts = data.allContentfulPost.edges;
@@ -118,8 +129,10 @@ const Index = ({ data }) => {
           {posts.map(({ node: post, index }) => (
             <Card key={post.id}>
               <PostLink to={`/posts/${post.slug}/`}>
-                <Img sizes={post.heroImage.sizes} backgroundColor={"#EEEEEE"} />
-                <h3>{post.title}</h3>
+                <PostPreview sizes={post.heroImage.sizes} backgroundColor={"#EEEEEE"} />
+                <PostCaption>
+                  {post.title}
+                </PostCaption>
               </PostLink>
             </Card>
           ))}

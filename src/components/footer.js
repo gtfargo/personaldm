@@ -3,6 +3,7 @@ import Link from "gatsby-link";
 import styled from "styled-components";
 
 import ContentfulAttribution from "./ContentfulAttribution";
+import NetlifyAttribution from "./NetlifyAttribution";
 
 const Wrapper = styled.footer`
   display: flex;
@@ -37,7 +38,10 @@ const Footer = () => (
   <Wrapper>
     <ul>
       <li>
-        <ContentfulAttribution attributionStyle="light" />
+        <ContentfulAttribution attributionStyle="mono" fillColor="#313d3e" />
+      </li>
+      <li>
+        <NetlifyAttribution />
       </li>
     </ul>
   </Wrapper>
