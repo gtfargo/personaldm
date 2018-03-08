@@ -1,10 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-require('prismjs/themes/prism.css')
+import React from "react";
+import styled from "styled-components";
+require("prismjs/themes/prism.css");
 
 const Wrapper = styled.div`
-
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-weight: 600;
     line-height: 1.25;
     margin: 0 0 1rem 0;
@@ -29,7 +30,7 @@ const Wrapper = styled.div`
   }
 
   a {
-    transition: all .2s;
+    transition: all 0.2s;
     color: ${props => props.theme.colors.base};
     &:hover {
       color: ${props => props.theme.colors.highlight};
@@ -55,9 +56,10 @@ const Wrapper = styled.div`
       list-style: disc;
       list-style-position: inside;
       line-height: 1.25;
-      &:last-child {margin: 0;}
+      &:last-child {
+        margin: 0;
+      }
     }
-
   }
 
   ol {
@@ -67,9 +69,10 @@ const Wrapper = styled.div`
       list-style: decimal;
       list-style-position: inside;
       line-height: 1.25;
-      &:last-child {margin: 0;}
+      &:last-child {
+        margin: 0;
+      }
     }
-
   }
 
   hr {
@@ -81,7 +84,7 @@ const Wrapper = styled.div`
   blockquote {
     font-style: italic;
     border-left: 4px solid ${props => props.theme.colors.secondary};
-    padding: 0 0 0 .5em;
+    padding: 0 0 0 0.5em;
   }
 
   pre {
@@ -92,12 +95,10 @@ const Wrapper = styled.div`
       background: inherit !important;
     }
   }
-`
+`;
 
-const Body = (props) => {
-  return (
-    <Wrapper dangerouslySetInnerHTML={props.dangerouslySetInnerHTML}/>
-  )
-}
+const Body = props => {
+  return <Wrapper dangerouslySetInnerHTML={props.dangerouslySetInnerHTML} />;
+};
 
-export default Body
+export default Body;

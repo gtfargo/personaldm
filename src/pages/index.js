@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
-import Img from 'gatsby-image'
-import Helmet from 'react-helmet'
-import styled from 'styled-components'
-import config from '../utils/siteConfig'
+import React from "react";
+import PropTypes from "prop-types";
+import Link from "gatsby-link";
+import Img from "gatsby-image";
+import Helmet from "react-helmet";
+import styled from "styled-components";
+import config from "../utils/siteConfig";
 
-const Index = ({data}) =>  {
-
+const Index = ({ data }) => {
   const Wrapper = styled.section`
     padding: 2em 1.5em;
     margin: 0 auto;
@@ -24,10 +23,10 @@ const Index = ({data}) =>  {
       line-height: 1.25;
     }
     span {
-      margin: 0 0 0 .25em;
+      margin: 0 0 0 0.25em;
     }
     a {
-      transition: all .2s;
+      transition: all 0.2s;
       color: ${props => props.theme.colors.base};
       &:hover {
         color: ${props => props.theme.colors.highlight};
@@ -97,31 +96,35 @@ const Index = ({data}) =>  {
 
   return (
     <Wrapper>
-
       <Header>
-        <h1>A blog made with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a>, <a href="https://www.contentful.com/" target="_blank">Contentful</a> and <a href="https://www.netlify.com/" target="_blank">Netlify</a> <span>🎉</span></h1>
+        <h1>
+          Your personal Dungeon Master
+          <span>🎉</span>
+        </h1>
       </Header>
 
       {posts && (
         <List>
-           {posts.map(({ node: post, index }) => (
-              <Card key={post.id}>
-                <PostLink to={`/posts/${post.slug}/`}>
-                  <Img sizes={post.heroImage.sizes} backgroundColor={'#EEEEEE'} />
-                  <h3>{post.title}</h3>
-                </PostLink>
-              </Card>
-           ))}
+          {posts.map(({ node: post, index }) => (
+            <Card key={post.id}>
+              <PostLink to={`/posts/${post.slug}/`}>
+                <Img sizes={post.heroImage.sizes} backgroundColor={"#EEEEEE"} />
+                <h3>{post.title}</h3>
+              </PostLink>
+            </Card>
+          ))}
         </List>
       )}
-
     </Wrapper>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query indexQuery {
-    allContentfulPost(limit: 1000, sort: {fields: [publishDate], order: DESC}) {
+    allContentfulPost(
+      limit: 1000
+      sort: { fields: [publishDate], order: DESC }
+    ) {
       edges {
         node {
           title
@@ -143,6 +146,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default Index
+export default Index;
