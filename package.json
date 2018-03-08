@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-gcn",
-  "description": "A starter template to build amazing static websites with Gatsby, Contentful and Netlify",
+  "name": "personaldm",
+  "description": "D&D campaign content",
   "version": "0.0.1",
-  "repository": "https://github.com/ryanwiemer/gatsby-starter-gcn",
-  "author": "Ryan Wiemer <ryan@ryanwiemer.com>",
+  "repository": "https://github.com/gtfargo/personaldm",
+  "author": "George Farro <gtfarro@gmail.com>",
   "dependencies": {
     "chalk": "^2.3.2",
     "contentful-import": "^6.2.2",
@@ -19,6 +19,7 @@
     "gatsby-source-contentful": "^1.3.40",
     "gatsby-source-filesystem": "^1.5.25",
     "gatsby-transformer-remark": "^1.7.34",
+    "gatsby-transformer-sharp": "^1.6.22",
     "inquirer": "^5.1.0",
     "lodash.find": "^4.6.0",
     "material-ui": "^1.0.0-beta.36",

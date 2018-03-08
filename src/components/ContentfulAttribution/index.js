@@ -21,7 +21,7 @@ export default class ContentfulAttribution extends React.Component<void, void> {
       <a href="https://www.contentful.com/" rel="nofollow" target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 101.7 33.08" style={{width: 100}}>
           <title>contentful</title>
-          <g id="Layer_2" dataName="Layer 2">
+          <g id="contentful-attribution">
             <path d="M6.7,26.38h0a5.79,5.79,0,0,1,0-8.19h0A2.26,2.26,0,1,0,3.5,15a10.49,10.49,0,0,0-3,7.3,10.65,10.65,0,0,0,3,7.3,2.26,2.26,0,0,0,3.2-3.2Z" fill="none" stroke={this.props.fillColor} strokeMiterlimit="10"/>
             <path d="M6.7,18.18h0a5.79,5.79,0,0,1,8.19,0h0A2.26,2.26,0,0,0,18.1,15a10.45,10.45,0,0,0-7.3-3,10.65,10.65,0,0,0-7.3,3,2.26,2.26,0,0,0,3.2,3.2Z" fill="none" stroke={this.props.fillColor} strokeMiterlimit="10"/>
             <path d="M14.9,26.38h0a5.79,5.79,0,0,1-8.19,0h0a2.26,2.26,0,1,0-3.2,3.2,10.49,10.49,0,0,0,7.3,3,10.65,10.65,0,0,0,7.3-3,2.26,2.26,0,1,0-3.2-3.2Z" fill="none" stroke={this.props.fillColor} strokeMiterlimit="10"/>

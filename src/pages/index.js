@@ -69,12 +69,12 @@ const Index = ({ data }) => {
   `;
 
   const Card = styled.li`
-    border: 1px solid ${props => props.theme.colors.secondary};
     border-radius: 5px;
     overflow: hidden;
     margin: 0 0 5em 0;
     width: 100%;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    background-color: white;
     transition: all 200ms;
     @media screen and (min-width: ${props => props.theme.responsive.small}) {
       flex: 0 0 47.5%;
@@ -103,16 +103,15 @@ const Index = ({ data }) => {
     }
   `;
 
+  const PostPreview = styled(Img)`
+    max-height: 250px;
+  `;
+
   const PostCaption = styled.h3`
     line-height: 2em;
     font-weight: 600;
     text-transform: capitalize;
     padding: 1em 1em 2em 1em;
-    background-color: white;
-  `;
-
-  const PostPreview = styled(Img)`
-    max-height: 250px;
   `;
 
   const posts = data.allContentfulPost.edges;
@@ -158,7 +157,7 @@ export const query = graphql`
           heroImage {
             title
             sizes(maxWidth: 800) {
-              ...GatsbyContentfulSizes_noBase64
+              ...GatsbyContentfulSizes_withWebp
             }
           }
           body {
