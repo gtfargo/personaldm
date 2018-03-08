@@ -5,9 +5,9 @@ import find from "lodash.find"
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import config from '../utils/siteConfig'
-import Hero from '../components/Hero'
-import Tags from '../components/Tags'
-import Body from '../components/Body'
+import Hero from '../components/hero'
+import Tags from '../components/tags'
+import Body from '../components/body'
 
 const PostTemplate = ({data}) => {
 

@@ -2,7 +2,7 @@ import React from "react";
 import Link from "gatsby-link";
 import styled from "styled-components";
 
-import ContentfulAttribution from "./ContentfulAttribution";
+import ContentfulAttribution from "./contentfulattribution";
 
 const Wrapper = styled.footer`
   display: flex;

@@ -6,8 +6,8 @@ import globals from "../styles/global";
 import theme from "../styles/theme";
 import favicon from "../images/favicon.ico";
 
-import Menu from "../components/Menu";
-import Footer from "../components/Footer";
+import Menu from "../components/menu";
+import Footer from "../components/footer";
 
 const Template = ({ children }) => {
   return (

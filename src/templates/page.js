@@ -4,7 +4,7 @@ import Img from "gatsby-image";
 import Helmet from "react-helmet";
 import styled from "styled-components";
 import config from "../utils/siteConfig";
-import Body from "../components/Body";
+import Body from "../components/body";
 
 const PageTemplate = ({ data }) => {
   const { title, id, slug, body } = data.contentfulPage;

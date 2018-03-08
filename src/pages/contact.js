@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
 import config from '../utils/siteConfig'
-import ContactForm from '../components/ContactForm'
+import ContactForm from '../components/contactform'
 
 const Wrapper = styled.section`
   padding: 3em 1.5em;
