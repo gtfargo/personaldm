@@ -9,6 +9,12 @@ import favicon from "../images/favicon.ico";
 import Menu from "../components/menu";
 import Footer from "../components/footer";
 
+import backgroundImage from '../images/graph_paper.png'
+
+const Main = styled.main`
+  background: url(${backgroundImage}) repeat fixed center;
+`
+
 const Template = ({ children }) => {
   return (
     <div>
@@ -31,7 +37,9 @@ const Template = ({ children }) => {
       <ThemeProvider theme={theme}>
         <div>
           <Menu />
-          {children()}
+          <Main>
+            {children()}
+          </Main>
           <Footer />
         </div>
       </ThemeProvider>

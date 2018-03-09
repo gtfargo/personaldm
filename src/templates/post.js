@@ -8,6 +8,8 @@ import config from '../utils/siteConfig'
 import Hero from '../components/hero'
 import Tags from '../components/tags'
 import Body from '../components/body'
+import ReactDisqusThread from 'react-disqus-thread'
+
 
 const PostTemplate = ({data}) => {
 
@@ -61,7 +63,7 @@ const PostTemplate = ({data}) => {
     margin-left: auto;
     order: 2;
   `;
-
+  console.log('my id',id)
   return(
     <div>
 
@@ -84,6 +86,15 @@ const PostTemplate = ({data}) => {
           {postIndex.previous && (<PreviousLink to={`/posts/${postIndex.previous.slug}/`}>Prev Post</PreviousLink>)}
           {postIndex.next && (<NextLink to={`/posts/${postIndex.next.slug}/`}>Next Post</NextLink>)}
         </PostNavigation>
+
+        <ReactDisqusThread
+          shortname="personaldm"
+          identifier={id}
+          title={`${title} - ${config.siteTitle}`}
+          onNewComment={(comment) => {
+            console.log(comment)
+          }}
+        />
 
       </Post>
 

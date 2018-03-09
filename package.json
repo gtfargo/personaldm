@@ -25,6 +25,8 @@
     "material-ui": "^1.0.0-beta.36",
     "path": "^0.12.7",
     "promise-polyfill": "^7.1.0",
+    "react-disqus-comments": "^1.1.1",
+    "react-disqus-thread": "^0.4.0",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.3.3",
     "styled-components": "^3.1.6",
