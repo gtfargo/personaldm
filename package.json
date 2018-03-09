@@ -1,10 +1,10 @@
 {
   "name": "personaldm",
-  "description": "D&D campaign content",
+  "description": "Personal DM - hand made D&D campaigns",
   "version": "0.0.1",
   "repository": "https://github.com/gtfargo/personaldm",
-  "author": "George Farro <gtfarro@gmail.com>",
   "dependencies": {
+    "aws-sdk": "^2.207.0",
     "chalk": "^2.3.2",
     "contentful-import": "^6.2.2",
     "dotenv": "^5.0.1",
@@ -25,7 +25,6 @@
     "material-ui": "^1.0.0-beta.36",
     "path": "^0.12.7",
     "promise-polyfill": "^7.1.0",
-    "react-disqus-comments": "^1.1.1",
     "react-disqus-thread": "^0.4.0",
     "react-helmet": "^5.2.0",
     "react-jss": "^8.3.3",

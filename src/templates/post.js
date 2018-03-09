@@ -63,7 +63,7 @@ const PostTemplate = ({data}) => {
     margin-left: auto;
     order: 2;
   `;
-  console.log('my id',id)
+  
   return(
     <div>
 

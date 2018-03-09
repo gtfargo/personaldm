@@ -8,6 +8,16 @@ import config from '../utils/siteConfig'
 import Hero from '../components/hero'
 import Tags from '../components/tags'
 import Body from '../components/body'
+import AWS from 'aws-sdk';
+
+AWS.config.update(
+  {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  }
+);
+
+const s3 = new AWS.S3();
 
 const CampaignTemplate = ({data}) => {
   const {
@@ -64,6 +74,7 @@ const CampaignTemplate = ({data}) => {
       text-decoration: none;
       box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
       transition: .2s;
+      cursor: pointer;
       &:hover {
         transform: translateY(-3px);
         background: ${props => props.theme.colors.highlight};
@@ -88,6 +99,19 @@ const CampaignTemplate = ({data}) => {
     order: 2;
   `;
 
+  const handleDownload = () => {
+    s3.getObject(
+      { Bucket: "personal-dm", Key: `campaigns/${slug}.zip` },
+      (error, data) => {
+        if (error != null) {
+          console.log("Failed to retrieve an object: " + error);
+        } else {
+          console.log("Loaded " + data.ContentLength + " bytes");
+          // do something with data.Body
+        }
+      }
+    );
+  }
   return(
     <div>
 
@@ -107,7 +131,7 @@ const CampaignTemplate = ({data}) => {
         <Body dangerouslySetInnerHTML={{ __html: summary.childMarkdownRemark.html }} />
 
         <CampaignDownload>
-          <a href={downloadUrl} rel="nofollow" target="_blank">
+          <a onClick={handleDownload} rel="nofollow" target="_blank">
             Download Here
           </a>
         </CampaignDownload>

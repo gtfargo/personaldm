@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
 const config = require('./src/utils/siteConfig');
 
 // If the contentfulConfig can't be found assume the site is being built via Netlify with production environment variables
