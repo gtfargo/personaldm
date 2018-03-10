@@ -101,7 +101,7 @@ const CampaignTemplate = ({data}) => {
 
   const handleDownload = () => {
     console.log(process.env)
-    console.logo(process.env.GATSBY_AWS_ACCESS_KEY_ID)
+    console.log(process.env.GATSBY_AWS_ACCESS_KEY_ID)
     s3.getObject(
       { Bucket: "personal-dm", Key: `campaigns/${slug}.zip` },
       (error, data) => {
