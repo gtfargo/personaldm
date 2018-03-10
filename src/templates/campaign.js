@@ -12,8 +12,8 @@ import AWS from 'aws-sdk';
 
 AWS.config.update(
   {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.GATSBY_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.GATSBY_AWS_SECRET_ACCESS_KEY,
   }
 );
 
@@ -100,8 +100,6 @@ const CampaignTemplate = ({data}) => {
   `;
 
   const handleDownload = () => {
-    console.log(process.env)
-    console.log(process.env.GATSBY_AWS_ACCESS_KEY_ID)
     s3.getObject(
       { Bucket: "personal-dm", Key: `campaigns/${slug}.zip` },
       (error, data) => {
