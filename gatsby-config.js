@@ -42,12 +42,15 @@ module.exports = {
     'gatsby-plugin-netlify',
     'gatsby-plugin-styled-components',
     {
-      resolve: `gatsby-plugin-google-tagmanager`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        id: process.env.GOOGLE_TAGMANAGER_ID,
-        // Include GTM in development.
-        // Defaults to false meaning GTM will only be loaded in production.
-        includeInDevelopment: true,
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
       },
     },
   ],
