@@ -32,6 +32,7 @@ const Template = ({ children }) => {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content={config.siteTitle} />
         <meta property="og:url" content={config.siteUrl} />
+        <meta name="google-site-verification" content="9mIsoWA1wRuNVDUdFchKZwyFcNl-uopJQVeOUE2vsDY" />
       </Helmet>
 
       <ThemeProvider theme={theme}>
