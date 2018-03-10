@@ -11,7 +11,10 @@ import Body from '../components/body'
 import AWS from 'aws-sdk';
 
 AWS.config.update(
-  {
+  process.env.NODE_ENV === 'development' ? {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  } : {
     accessKeyId: process.env.GATSBY_AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.GATSBY_AWS_SECRET_ACCESS_KEY,
   }
@@ -100,21 +103,23 @@ const CampaignTemplate = ({data}) => {
   `;
 
   const handleDownload = () => {
-    s3.getObject(
-      { Bucket: "personal-dm", Key: `campaigns/${slug}.zip` },
+    s3.getSignedUrl('getObject', { 
+        Bucket: "personal-dm", 
+        Key: `campaigns/${slug}.zip`,
+        Expires: 10,
+      },
       (error, data) => {
         if (error != null) {
           console.log("Failed to retrieve an object: " + error);
         } else {
-          console.log("Loaded " + data.ContentLength + " bytes");
           // do something with data.Body
+          window.open(data, '_blank')
         }
       }
-    );
+    )
   }
   return(
     <div>
-
       <Helmet>
         <title>{`${title} - ${config.siteTitle}`}</title>
         <meta property="og:title" content={`${title} - ${config.siteTitle}`} />
