@@ -8,9 +8,7 @@ exports.onInitialClientRender = () => {
 
 exports.onRouteUpdate = ({ location }) => {
   console.log('New pathname', location.pathname)
-  if (ga) {
-    ga('send', 'pageview', {
-      page: location.pathname
-    })
+  if (!!ga) {
+    ga('send', 'pageview', location.pathname);
   }
 }
