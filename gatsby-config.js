@@ -40,6 +40,15 @@ module.exports = {
         contentfulConfig.production
     },
     'gatsby-plugin-netlify',
-    'gatsby-plugin-styled-components'
+    'gatsby-plugin-styled-components',
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: process.env.GOOGLE_TAGMANAGER_ID,
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: true,
+      },
+    },
   ],
 }

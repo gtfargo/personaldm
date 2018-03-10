@@ -170,7 +170,6 @@ export const query = graphql`
       }
       publishDate
       tags
-      downloadUrl
     }
     allContentfulCampaign(limit: 1000, sort: { fields: [publishDate], order: DESC })  {
       edges {
