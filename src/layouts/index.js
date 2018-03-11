@@ -39,7 +39,7 @@ const Template = ({ children }) => {
       <ThemeProvider theme={theme}>
         <div>
           <Menu />
-          <Notification />
+          {/* <Notification /> */}
           <Main>
             {children()}
           </Main>
