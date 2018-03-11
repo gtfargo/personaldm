@@ -6,6 +6,7 @@ import Helmet from "react-helmet";
 import styled from "styled-components";
 import config from "../utils/siteConfig";
 
+
 const Campaigns = ({ data }) => {
   const Wrapper = styled.section`
     padding: 2em 1.5em;

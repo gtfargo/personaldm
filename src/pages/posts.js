@@ -17,7 +17,7 @@ import ta from 'time-ago'
 //   },
 // });
 
-const Index = ({ data }) => {
+const Posts = ({ data }) => {
   const Wrapper = styled.section`
     padding: 2em 1.5em;
     margin: 0 auto;
@@ -138,13 +138,6 @@ const Index = ({ data }) => {
 
   return (
     <Wrapper>
-      <Header>
-        <h1>
-          Your personal Dungeon Master
-          <span>🎉</span>
-        </h1>
-      </Header>
-
       {posts && (
         <List>
           {posts.map(({ node: post, index }) => (
@@ -171,7 +164,7 @@ const Index = ({ data }) => {
 };
 
 export const query = graphql`
-  query indexQuery {
+  query postsQuery {
     allContentfulPost(
       limit: 1000
       sort: { fields: [publishDate], order: DESC }
@@ -208,6 +201,6 @@ export const query = graphql`
   }
 `;
 
-export default Index
+export default Posts
 // export default withRoot(withStyles(styles)(Index));
 

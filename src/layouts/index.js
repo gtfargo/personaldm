@@ -8,6 +8,7 @@ import favicon from "../images/favicon.ico";
 
 import Menu from "../components/menu";
 import Footer from "../components/footer";
+import Notification from "../components/Notification";
 
 import backgroundImage from '../images/graph_paper.png'
 
@@ -38,6 +39,7 @@ const Template = ({ children }) => {
       <ThemeProvider theme={theme}>
         <div>
           <Menu />
+          <Notification />
           <Main>
             {children()}
           </Main>

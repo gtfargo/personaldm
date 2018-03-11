@@ -9,6 +9,8 @@ import Hero from '../components/hero'
 import Tags from '../components/tags'
 import Body from '../components/body'
 import AWS from 'aws-sdk';
+import * as Icon from 'react-feather';
+
 
 AWS.config.update(
   process.env.NODE_ENV === 'development' ? {
@@ -66,29 +68,32 @@ const CampaignTemplate = ({data}) => {
 
   const CampaignDownload = styled.div`
     display: flex;
-    a {
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    margin: 1em 0 1em 0;
+    background: ${props => props.theme.colors.highlight};
+    border-radius: 2px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    transition: .2s;
+    cursor: pointer;
+    &:hover {
+      transform: translateY(-3px);
       background: ${props => props.theme.colors.highlight};
+      opacity: 0.8;
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.15);
+    }
+    &:active {
+      transform: translateY(2px);
+      opacity: 1;
+      box-shadow: 0px 0px 0px rgba(0,0,0,0.25);
+    }
+    a {
       color: white;
-      padding: 1em;
       font-weight: 600;
       font-size: 2em;
-      margin: 1em 0 1em 0;
-      border-radius: 2px;
       text-decoration: none;
-      box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-      transition: .2s;
-      cursor: pointer;
-      &:hover {
-        transform: translateY(-3px);
-        background: ${props => props.theme.colors.highlight};
-        opacity: 0.8;
-        box-shadow: 0px 5px 10px rgba(0,0,0,0.15);
-      }
-      &:active {
-        transform: translateY(2px);
-        opacity: 1;
-        box-shadow: 0px 0px 0px rgba(0,0,0,0.25);
-      }
+      margin-left: 0.5em;
     }
   `;
 
@@ -136,8 +141,9 @@ const CampaignTemplate = ({data}) => {
         <Body dangerouslySetInnerHTML={{ __html: summary.childMarkdownRemark.html }} />
 
         <CampaignDownload>
+          <Icon.DownloadCloud size={30} color="white"/>
           <a onClick={handleDownload} rel="nofollow" target="_blank">
-            Download Here
+            Download
           </a>
         </CampaignDownload>
 
