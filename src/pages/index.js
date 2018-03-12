@@ -7,7 +7,8 @@ import Helmet from "react-helmet";
 import styled from "styled-components";
 import config from "../utils/siteConfig";
 import ta from "time-ago";
-import Slider from "react-slick";
+import Carousel from 'nuka-carousel';
+
 // import withRoot from '../withRoot';
 // import graphpaperBackground from '../images/graph_paper.png'
 
@@ -43,7 +44,7 @@ const Index = ({ data }) => {
       text-align: center;
       text-shadow: 0px 2px 5px rgba(0,0,0,0.52);
       @media (max-width: ${props => props.theme.responsive.medium}) {
-        font-size: 3em;
+        font-size: 2em;
       }
     }
     div {
@@ -55,7 +56,17 @@ const Index = ({ data }) => {
         line-height: 1.5em;
         text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
         @media (max-width: ${props => props.theme.responsive.medium}) {
-          font-size: 1.5em;
+          font-size: 1.3em;
+          line-height: 1;
+        }
+      }
+      a {
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        transition: 200ms all;
+        &:hover {
+          opacity: 0.5;
         }
       }
     }
@@ -66,18 +77,19 @@ const Index = ({ data }) => {
   const posts = data.allContentfulPost.edges;
   
   const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
+    autplay: true,
+    autoplayInterval: 5000,
   };
 
   return (
     <div>
-      <Slider {...settings}>
+      <Carousel
+        autoplay
+        autoplayInterval={3000}
+        wrapAround={true}
+      >
         {slides.map(({ node: slide, index }) => (
-          <Slide>
+          <Slide key={`${slide.headline}-${slide.id}`}>
             <Img sizes={slide.heroImage.sizes} backgroundColor={"#EEEEEE"} />
             <SlideOverlay>
               <h1>{slide.headline}</h1>
@@ -85,7 +97,7 @@ const Index = ({ data }) => {
             </SlideOverlay>
           </Slide>
         ))}
-      </Slider>
+      </Carousel>
     </div>
   );
 };
@@ -95,6 +107,7 @@ export const query = graphql`
     allContentfulHomeScreenSlide {
       edges {
         node {
+          id
           headline
           subheadline {
             childMarkdownRemark {
