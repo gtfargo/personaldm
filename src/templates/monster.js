@@ -110,22 +110,6 @@ const MonsterTemplate = ({data}) => {
     order: 2;
   `;
 
-  const handleDownload = () => {
-    s3.getSignedUrl('getObject', { 
-        Bucket: "personal-dm", 
-        Key: `monsters/${slug}.zip`,
-        Expires: 10,
-      },
-      (error, data) => {
-        if (error != null) {
-          console.log("Failed to retrieve an object: " + error);
-        } else {
-          // do something with data.Body
-          window.open(data, '_blank')
-        }
-      }
-    )
-  }
   return(
     <div>
       <Helmet>
@@ -135,22 +119,7 @@ const MonsterTemplate = ({data}) => {
       </Helmet>
 
       <Monster>
-        <h1>name: {name} </h1>
-        <h1>id: {id} </h1>
-        <h1>slug: {slug} </h1>
-        <h1>publishDate: {publishDate} </h1>
-        <h1>size: {size} </h1>
-        <h1>hitPoints: {hitPoints} </h1>
-        <h1>armorClass: {armorClass} </h1>
-        <h1>speed: {speed} </h1>
-        <h1>strength: {strength} </h1>
-        <h1>dexterity: {dexterity} </h1>
-        <h1>constitution: {constitution} </h1>
-        <h1>intelligence: {intelligence} </h1>
-        <h1>wisdom: {wisdom} </h1>
-        <h1>charisma: {charisma} </h1>
-        <h1>senses: {senses} </h1>
-        <h1>languages: {languages} </h1>
+        
       </Monster>
 
     </div>
@@ -165,7 +134,8 @@ export const query = graphql`
       slug
       publishDate
       size
-      hitPoints
+      creatureType
+      alignment
       armorClass
       speed
       strength
@@ -176,6 +146,7 @@ export const query = graphql`
       charisma
       senses
       languages
+      challengeRating
     }
   }
 `

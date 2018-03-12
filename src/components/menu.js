@@ -54,7 +54,7 @@ const Menu = () => {
           <ul>
             <li><Link to="/" exact activeStyle={activeLinkStyle}>Home</Link></li>
             <li><Link to="/campaigns/" activeStyle={activeLinkStyle}>Campaigns</Link></li>
-            <li><Link to="/what-is-a-campaign/" activeStyle={activeLinkStyle}>What is a Campaign?</Link></li>
+            <li><Link to="/posts/" activeStyle={activeLinkStyle}>Blog</Link></li>
             <li><Link to="/about/" activeStyle={activeLinkStyle}>About</Link></li>
             <li><Link to="/contact/" activeStyle={activeLinkStyle}>Contact</Link></li>
           </ul>
