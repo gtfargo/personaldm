@@ -1,14 +1,16 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import styled from 'styled-components'
+import React from "react";
+import Link from "gatsby-link";
+import styled from "styled-components";
+import Logo from "./Logo";
 
 const Header = styled.header`
-  background: ${props => props.theme.colors.base};
+  background: white;
   width: 100%;
   padding: 1.5em 0;
   z-index: 99;
   position: relative;
-`
+  border-bottom: 1px solid ${props => props.theme.colors.highlight};
+`;
 const Nav = styled.nav`
   width: 100%;
   max-width: ${props => props.theme.sizes.maxWidth};
@@ -18,6 +20,7 @@ const Nav = styled.nav`
   ul {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   li {
@@ -38,29 +41,49 @@ const Nav = styled.nav`
     padding:
     border-bottom: 2px solid ${props => props.theme.colors.base};
     &:hover {
-      color: white;
+      color: ${props => props.theme.colors.highlight};
     }
   }
-`
+`;
 
 const activeLinkStyle = {
-  color: 'white',
+  color: '#ff4e00'
 };
 
 const Menu = () => {
-    return (
-      <Header>
-        <Nav>
-          <ul>
-            <li><Link to="/" exact activeStyle={activeLinkStyle}>Home</Link></li>
-            <li><Link to="/campaigns/" activeStyle={activeLinkStyle}>Campaigns</Link></li>
-            <li><Link to="/posts/" activeStyle={activeLinkStyle}>Blog</Link></li>
-            <li><Link to="/about/" activeStyle={activeLinkStyle}>About</Link></li>
-            <li><Link to="/contact/" activeStyle={activeLinkStyle}>Contact</Link></li>
-          </ul>
-        </Nav>
-      </Header>
-    )
-}
+  return (
+    <Header>
+      <Nav>
+        <ul>
+          <li>
+            <Link to="/" exact activeStyle={activeLinkStyle}>
+              <Logo />
+            </Link>
+          </li>
+          <li>
+            <Link to="/campaigns/" activeStyle={activeLinkStyle}>
+              Campaigns
+            </Link>
+          </li>
+          <li>
+            <Link to="/posts/" activeStyle={activeLinkStyle}>
+              Blog
+            </Link>
+          </li>
+          <li>
+            <Link to="/about/" activeStyle={activeLinkStyle}>
+              About
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact/" activeStyle={activeLinkStyle}>
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </Nav>
+    </Header>
+  );
+};
 
-export default Menu
+export default Menu;
