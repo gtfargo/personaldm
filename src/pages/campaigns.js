@@ -6,7 +6,6 @@ import Helmet from "react-helmet";
 import styled from "styled-components";
 import config from "../utils/siteConfig";
 
-
 const Campaigns = ({ data }) => {
   const Wrapper = styled.section`
     padding: 2em 1.5em;
@@ -94,7 +93,6 @@ const Campaigns = ({ data }) => {
   `;
 
   const campaigns = data.allContentfulCampaign.edges;
-
   return (
     <Wrapper>
       <Header>
@@ -106,14 +104,19 @@ const Campaigns = ({ data }) => {
 
       {campaigns && (
         <List>
-          {campaigns.map(({ node: campaign, index }) => (
-            <Card key={campaign.id}>
-              <CampaignLink to={`/campaigns/${campaign.slug}/`}>
-                <Img sizes={campaign.heroImage.sizes} backgroundColor={"#EEEEEE"} />
-                <h3>{campaign.title}</h3>
-              </CampaignLink>
-            </Card>
-          ))}
+          {campaigns.map(({ node: campaign, index }) => {
+            return (
+              <Card key={campaign.id}>
+                <CampaignLink to={`/campaigns/${campaign.slug}/`}>
+                  <Img
+                    sizes={campaign.heroImage.sizes}
+                    backgroundColor={"#EEEEEE"}
+                  />
+                  <h3>{campaign.title}</h3>
+                </CampaignLink>
+              </Card>
+            );
+          })}
         </List>
       )}
     </Wrapper>

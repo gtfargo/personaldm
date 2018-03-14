@@ -82,20 +82,26 @@ const PostTemplate = ({data}) => {
 
         <Body dangerouslySetInnerHTML={{ __html: body.childMarkdownRemark.html }} />
 
-        <PostNavigation >
+        <PostNavigation>
           {postIndex.previous && (<PreviousLink to={`/posts/${postIndex.previous.slug}/`}>Prev Post</PreviousLink>)}
           {postIndex.next && (<NextLink to={`/posts/${postIndex.next.slug}/`}>Next Post</NextLink>)}
         </PostNavigation>
-
-        <ReactDisqusThread
-          shortname="personaldm"
-          identifier={id}
-          title={`${title} - ${config.siteTitle}`}
-          onNewComment={(comment) => {
-            console.log(comment)
-          }}
-        />
-
+        <div style={{
+          marginTop: 32,
+          background: 'white',
+          padding: 32,
+          borderRadius: 5,
+          border: '1px solid rgba(0,0,0,0.2)'
+        }}>
+          <ReactDisqusThread
+            shortname="personaldm"
+            identifier={id}
+            title={`${title} - ${config.siteTitle}`}
+            onNewComment={(comment) => {
+              console.log(comment)
+            }}
+          />
+        </div>
       </Post>
 
     </div>
