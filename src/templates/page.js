@@ -21,12 +21,12 @@ const PageTemplate = ({ data }) => {
     max-width: ${props => props.theme.sizes.maxWidthCentered};
     padding: 3em 1.5em 2em;
   `;
-
+  
   return (
     <div>
       <Helmet>
         <title>{`${title} - ${config.siteTitle}`}</title>
-        <meta name="description" content={description} />
+        <meta name="description" content={description.description} />
         <meta property="og:title" content={`${title} - ${config.siteTitle}`} />
         <meta property="og:url" content={`${config.siteUrl}/${slug}/`} />
       </Helmet>
@@ -48,9 +48,7 @@ export const query = graphql`
       id
       slug
       description {
-        childMarkdownRemark {
-          html
-        }
+        description
       }
       body {
         childMarkdownRemark {
