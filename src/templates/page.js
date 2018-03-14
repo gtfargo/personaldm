@@ -7,7 +7,7 @@ import config from "../utils/siteConfig";
 import Body from "../components/body";
 
 const PageTemplate = ({ data }) => {
-  const { title, id, slug, body } = data.contentfulPage;
+  const { title, id, slug, body, description } = data.contentfulPage;
 
   const Title = styled.h1`
     font-size: 3em;
@@ -26,6 +26,7 @@ const PageTemplate = ({ data }) => {
     <div>
       <Helmet>
         <title>{`${title} - ${config.siteTitle}`}</title>
+        <meta name="description" content={description} />
         <meta property="og:title" content={`${title} - ${config.siteTitle}`} />
         <meta property="og:url" content={`${config.siteUrl}/${slug}/`} />
       </Helmet>
@@ -46,6 +47,11 @@ export const query = graphql`
       title
       id
       slug
+      description {
+        childMarkdownRemark {
+          html
+        }
+      }
       body {
         childMarkdownRemark {
           html
