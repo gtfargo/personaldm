@@ -3,10 +3,14 @@ import styled from "styled-components";
 
 const StyledLogo = styled.svg`
     max-width: 2em;
+    @media (min-width: ${props => props.theme.responsive.small}) {
+      max-width: 3em;
+    }
   `
 
 // "#f95451"
-const fillColor = "#ff4e00"
+// const fillColor = "#ff4e00"
+const fillColor = "#ffc200"
 
 const Logo = (props) => (
   <StyledLogo xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98.64 138.04">
@@ -40,7 +44,7 @@ const Logo = (props) => (
         id="pencil_body_2"
         data-name="pencil_body_2"
         points="78.91 0 78.91 15.78 59.19 15.78 59.19 0 39.46 0 39.46 15.78 19.73 15.78 19.73 0 0.1 0 0 103.5 98.64 34.33 98.64 0 78.91 0"
-        fill={fillColor}
+        fill="#333"
       />
     </g>
   </StyledLogo>

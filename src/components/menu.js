@@ -47,7 +47,7 @@ const Nav = styled.nav`
 `;
 
 const activeLinkStyle = {
-  color: '#ff4e00'
+  color: '#ffc200'
 };
 
 const Menu = () => {
