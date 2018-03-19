@@ -7,9 +7,6 @@ import NetlifyAttribution from "./NetlifyAttribution";
 
 const Wrapper = styled.footer`
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: flex-start;
   margin: 0 auto;
   max-width: ${props => props.theme.sizes.maxWidth};
 
@@ -17,22 +14,49 @@ const Wrapper = styled.footer`
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
+    align-items: center;
     border-top: 1px solid ${props => props.theme.colors.secondary};
-    padding: 1em 0;
-    margin: 0 1.5em;
+    width: 100%;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 3em;
+    @media screen and (max-width: ${props => props.theme.responsive.small}) {
+      flex-direction: column;
+      padding-top: 1em;
+      li {
+        margin-top: 1em;
+      }
+    }
   }
 
   li {
-    display: inline-block;
+    flex: 1,
+    align-items: center;
+    justify-content: center;
     padding: 0.25em 0;
-    width: 100%;
     @media screen and (min-width: ${props => props.theme.responsive.small}) {
-      width: auto;
     }
   }
 `;
+
+const DonateButton = styled.a`
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+  background-color: rgb(255, 194, 0, 0.1);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: ${props => props.theme.colors.highlight};
+  border-radius: 5px;
+  // border: 1px solid ${props => props.theme.colors.highlight};
+  transition: all 300ms;
+  &:hover, &:active {
+    background-color: rgb(255, 194, 0, 1);
+    color: white;
+  }
+`
 
 const Footer = () => (
   <Wrapper>
@@ -41,9 +65,15 @@ const Footer = () => (
         <ContentfulAttribution attributionStyle="mono" fillColor="#313d3e" />
       </li>
       <li>
+        <DonateButton href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8NW3Q5TCHAEN">
+          Support my work <span> 😊 </span>
+        </DonateButton>
+      </li>
+      <li>
         <NetlifyAttribution />
       </li>
     </ul>
+
   </Wrapper>
 );
 

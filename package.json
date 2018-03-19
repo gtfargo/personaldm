@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "repository": "https://github.com/gtfargo/personaldm",
   "dependencies": {
+    "awesome-possum": "^3.3.2",
     "aws-sdk": "^2.207.0",
     "chalk": "^2.3.2",
     "contentful-import": "^6.2.2",

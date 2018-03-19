@@ -7,7 +7,6 @@ import Helmet from "react-helmet";
 import styled from "styled-components";
 import config from "../utils/siteConfig";
 import ta from "time-ago";
-import Carousel from 'nuka-carousel';
 
 // import withRoot from '../withRoot';
 // import graphpaperBackground from '../images/graph_paper.png'
@@ -20,106 +19,115 @@ import Carousel from 'nuka-carousel';
 // });
 
 const Index = ({ data }) => {
-  const Slide = styled.div`
+  const posts = data.allContentfulPost.edges;
+  const newCampaign = data.allContentfulCampaign.edges[0].node;
+
+  const Hero = styled.section`
     position: relative;
+    max-width: ${props => props.theme.sizes.maxWidth};
+    margin: 0 auto;
   `;
 
-  const SlideOverlay = styled.div`
+  const CampaignCover = styled(Img)`
+    max-height: 400px;
+    // margin: 0 auto;
+    // max-width: ${props => props.theme.sizes.maxWidth};
+  `;
+
+  const CampaignCoverOverlay = styled.div`
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
+    // background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+    //             linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+    //             linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
+    background: linear-gradient(
+        135deg,
+        rgba(255, 194, 0, 0.4) 0,
+        rgba(255, 194, 0, 0) 50%,
+        rgba(255, 194, 0, 0) 100%
+      ),
+      linear-gradient(
+        45deg,
+        rgba(40, 0, 215, 0) 0,
+        rgba(40, 0, 215, 0) 50%,
+        rgba(40, 0, 215, 0.4) 100%
+      ),
+      linear-gradient(transparent 5%, rgba(0, 0, 0, 0.8) 100%);
     left: 0;
     right: 0;
+    top: 0;
     bottom: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
     padding: 2em;
-    background-color: rgba(0,0,0,0.3);
-    h1 {
-      color: white;
-      font-size: 4em;
-      text-align: center;
-      text-shadow: 0px 2px 5px rgba(0,0,0,0.52);
-      @media (max-width: ${props => props.theme.responsive.medium}) {
-        font-size: 2em;
-      }
-    }
-    div {
-      padding-top: 1em;
-      p {
-        font-size: 2em;
-        text-align: center;
-        color: white;
-        line-height: 1.5em;
-        text-shadow: 0px 1px 3px rgba(0,0,0,0.4);
-        @media (max-width: ${props => props.theme.responsive.medium}) {
-          font-size: 1.3em;
-          line-height: 1;
-        }
-      }
-      a {
-        text-decoration: none;
-        font-weight: bold;
-        color: white;
-        transition: 200ms all;
-        &:hover {
-          opacity: 0.5;
-        }
-      }
-    }
-    
   `;
 
-  const slides = data.allContentfulHomeScreenSlide.edges;
-  const posts = data.allContentfulPost.edges;
-  
-  const settings = {
-    autplay: true,
-    autoplayInterval: 5000,
-  };
+  const CampaignTitle = styled(Link)`
+    font-size: 3em;
+    line-height: 1.2em;
+    color: white;
+    text-decoration: none;
+    text-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+    transition: all 200ms;
+    border-bottom: 3px solid transparent;
+    &:hover {
+      color: ${props => props.theme.colors.highlight};
+      border-bottom: 3px solid ${props => props.theme.colors.highlight};
+    }
+  `;
+
+  const CampaignInfo = styled.div`
+    font-size: 1.5em;
+    line-height: 2em;
+    color: white;
+    text-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
+  `;
 
   return (
     <div>
-      <Carousel
-        autoplay
-        autoplayInterval={3000}
-        wrapAround={true}
-      >
-        {slides.map(({ node: slide, index }) => (
-          <Slide key={`${slide.headline}-${slide.id}`}>
-            <Img sizes={slide.heroImage.sizes} backgroundColor={"#EEEEEE"} />
-            <SlideOverlay>
-              <h1>{slide.headline}</h1>
-              <div dangerouslySetInnerHTML={{ __html: slide.subheadline.childMarkdownRemark.html }} />
-            </SlideOverlay>
-          </Slide>
-        ))}
-      </Carousel>
+      <Hero>
+        <CampaignCover
+          sizes={newCampaign.heroImage.sizes}
+          backgroundColor={"#EEEEEE"}
+        />
+        <CampaignCoverOverlay>
+          <CampaignTitle to={`/campaigns/${newCampaign.slug}`}>
+            {newCampaign.title}
+          </CampaignTitle>
+          <CampaignInfo>
+            Published {ta.ago(new Date(newCampaign.publishDate))}
+          </CampaignInfo>
+        </CampaignCoverOverlay>
+      </Hero>
     </div>
   );
 };
 
 export const query = graphql`
   query indexQuery {
-    allContentfulHomeScreenSlide {
+    allContentfulCampaign(
+      limit: 1
+      sort: { fields: [publishDate], order: DESC }
+    ) {
       edges {
         node {
+          title
           id
-          headline
-          subheadline {
+          slug
+          heroImage {
+            title
+            sizes(maxWidth: 1200) {
+              ...GatsbyContentfulSizes_noBase64
+            }
+          }
+          summary {
             childMarkdownRemark {
               html
             }
           }
-          heroImage {
-            title
-            sizes(maxWidth: 1200) {
-              ...GatsbyContentfulSizes_withWebp
-            }
-          }
+          publishDate
+          tags
         }
       }
     }
