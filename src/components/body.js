@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-require("prismjs/themes/prism.css");
+// require("prismjs/themes/prism.css");
 
 const Wrapper = styled.div`
   h1,

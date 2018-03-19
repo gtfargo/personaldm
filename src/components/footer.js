@@ -20,6 +20,7 @@ const Wrapper = styled.footer`
     padding-left: 1em;
     padding-right: 1em;
     padding-top: 3em;
+    padding-bottom: 3em;
     @media screen and (max-width: ${props => props.theme.responsive.small}) {
       flex-direction: column;
       padding-top: 1em;
@@ -65,7 +66,7 @@ const Footer = () => (
         <ContentfulAttribution attributionStyle="mono" fillColor="#313d3e" />
       </li>
       <li>
-        <DonateButton href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8NW3Q5TCHAEN">
+        <DonateButton target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=B8NW3Q5TCHAEN">
           Support my work <span> 😊 </span>
         </DonateButton>
       </li>
