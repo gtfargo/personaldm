@@ -11,6 +11,11 @@ const Button = styled.button`
   padding: 0 12px;
   position: relative;
   text-align: center;
+  
+  ${props => props.primary && css`
+    background: palevioletred;
+    color: white;
+  `}
 `;
 
 
